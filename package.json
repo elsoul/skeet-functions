@@ -1,6 +1,6 @@
 {
   "name": "skeet-functions",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Skeet Functions - SKeet Full-stack TypeScript Serverless Framework",
   "repository": "https://github.com/elsoul/skeet-cli.git",
   "author": "ELSOUL LABO B.V.",
@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .ts,.js --fix .",
     "dev": "nodemon",
+    "dev:login": "npx ts-node -r tsconfig-paths/register --transpile-only src/scripts/login.ts",
     "build": "npx ts-node build.ts",
     "serve": "firebase emulators:start",
     "shell": "yarn build && firebase functions:shell",
@@ -22,7 +23,8 @@
   "main": "dist/index.js",
   "dependencies": {
     "@google-cloud/pubsub": "3.4.1",
-    "@google-cloud/tasks": "3.1.1",
+    "@skeet-framework/firestore": "^0.1.0",
+    "crypto": "1.0.1",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "dotenv": "16.0.3",
@@ -41,6 +43,6 @@
     "eslint-plugin-import": "2.25.4",
     "firebase-functions-test": "3.0.0",
     "nodemon": "2.0.20",
-    "typescript": "5.0.2"
+    "typescript": "5.0.4"
   }
 }
