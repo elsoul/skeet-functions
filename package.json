@@ -1,6 +1,6 @@
 {
   "name": "skeet-functions",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Skeet Functions - SKeet Full-stack TypeScript Serverless Framework",
   "repository": "https://github.com/elsoul/skeet-cli.git",
   "author": "ELSOUL LABO B.V.",
@@ -23,11 +23,12 @@
   "main": "dist/index.js",
   "dependencies": {
     "@google-cloud/pubsub": "3.4.1",
-    "@skeet-framework/firestore": "^0.1.0",
+    "@skeet-framework/firestore": "0.6.0",
     "crypto": "1.0.1",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
     "dotenv": "16.0.3",
+    "firebase": "9.22.0",
     "firebase-admin": "11.6.0",
     "firebase-functions": "4.4.0",
     "node-fetch": "2.6.6",

@@ -9,16 +9,41 @@ const key = crypto.scryptSync(password, salt, 32)
 const inputEncoding = 'utf8'
 const outputEncoding = 'base64'
 
-export const encrypt = async (data: string, iv: Buffer) => {
-  const cipher = crypto.createCipheriv(algorithm, key, iv)
-  let cipheredData = cipher.update(data, inputEncoding, outputEncoding)
-  cipheredData += cipher.final(outputEncoding)
-  return cipheredData
+export const encrypt = (data: string, iv: string) => {
+  try {
+    const cipher = crypto.createCipheriv(
+      algorithm,
+      key,
+      Buffer.from(iv, 'base64')
+    )
+    let cipheredData = cipher.update(data, inputEncoding, outputEncoding)
+    cipheredData += cipher.final(outputEncoding)
+    return cipheredData
+  } catch (error) {
+    throw new Error(`encrypt: ${error}`)
+  }
 }
 
-export const decrypt = async (data: string, iv: Buffer) => {
-  const decipher = crypto.createDecipheriv(algorithm, key, iv)
-  let decipheredData = decipher.update(data, outputEncoding, inputEncoding)
-  decipheredData += decipher.final(inputEncoding)
-  return decipheredData
+export const decrypt = (data: string, iv: string) => {
+  try {
+    const decipher = crypto.createDecipheriv(
+      algorithm,
+      key,
+      Buffer.from(iv, 'base64')
+    )
+    let decipheredData = decipher.update(data, outputEncoding, inputEncoding)
+    decipheredData += decipher.final(inputEncoding)
+    return decipheredData
+  } catch (error) {
+    throw new Error(`decrypt: ${error}`)
+  }
+}
+
+export const generateIv = () => {
+  try {
+    const iv = crypto.randomBytes(16)
+    return Buffer.from(iv).toString('base64')
+  } catch (error) {
+    throw new Error(`generateIv: ${error}`)
+  }
 }
