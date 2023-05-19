@@ -8,7 +8,7 @@ export const firestoreExample = onDocumentCreated(
     try {
       console.log(event.params)
     } catch (error) {
-      const errorLog = `solanatransfer - ${error}`
+      const errorLog = `firestoreExample - ${error}`
       console.log(errorLog)
     }
   }
