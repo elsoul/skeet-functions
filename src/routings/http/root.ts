@@ -9,13 +9,12 @@ export const root = onRequest(
     try {
       const body = req.body
       res.json({
-        status: 'Skeet APP is Running!',
+        status: 'success',
+        message: 'Skeet Backend is running!',
         body,
       })
     } catch (error) {
-      const errorLog = `root - ${error}`
-      console.log(errorLog)
-      res.status(400).json({ result: 'root error!' })
+      res.status(500).json({ status: 'error', message: String(error) })
     }
   }
 )
