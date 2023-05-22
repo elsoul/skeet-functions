@@ -1,6 +1,6 @@
 import { User } from '@/models'
 import { addCollectionItem } from '@skeet-framework/firestore'
-import functions from 'firebase-functions'
+import * as functions from 'firebase-functions/v1'
 import { authDefaultOption } from '@/routings'
 
 const region = process.env.REGION || 'europe-west6'
