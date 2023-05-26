@@ -2,8 +2,9 @@ import dotenv from 'dotenv'
 import { RuntimeOptions } from 'firebase-functions/v1'
 dotenv.config()
 
-const project = process.env.PROJECT_ID || 'skeet-example'
-const serviceAccount = `${project}@${project}.iam.gserviceaccount.com`
+const appName = process.env.SKEET_APP_NAME || 'skeet-app'
+const project = process.env.PROJECT_ID || 'skeet-app'
+const serviceAccount = `${appName}@${project}.iam.gserviceaccount.com`
 const vpcConnector = `${project}-con`
 
 export const authDefaultOption: RuntimeOptions = {
