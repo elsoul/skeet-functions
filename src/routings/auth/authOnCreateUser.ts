@@ -1,12 +1,12 @@
 import { User } from '@/models'
 import { addCollectionItem } from '@skeet-framework/firestore'
 import * as functions from 'firebase-functions/v1'
-import { authDefaultOption } from '@/routings'
+import { authPublicOption } from '@/routings'
 
 const region = process.env.REGION || 'europe-west6'
 
 export const authOnCreateUser = functions
-  .runWith(authDefaultOption)
+  .runWith(authPublicOption)
   .region(region)
   .auth.user()
   .onCreate(async (user) => {
