@@ -2,6 +2,9 @@ import { User } from '@/models'
 import { addCollectionItem } from '@skeet-framework/firestore'
 import * as functions from 'firebase-functions/v1'
 import { authPublicOption } from '@/routings'
+import { gravatarIconUrl } from '@/utils/placeholder'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const region = process.env.REGION || 'europe-west6'
 
@@ -15,8 +18,11 @@ export const authOnCreateUser = functions
       const userParams = {
         uid,
         email: email || '',
-        username: displayName || '',
-        iconUrl: photoURL || '',
+        username: displayName || email?.split('@')[0] || '',
+        iconUrl:
+          photoURL == '' || !photoURL
+            ? gravatarIconUrl(email ?? 'info@skeet.dev')
+            : photoURL,
       }
       const userRef = await addCollectionItem<User>('User', userParams, uid)
       console.log({ status: 'success', userRef })
