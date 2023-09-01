@@ -4,10 +4,9 @@ import skeetOptions from '../../../skeetOptions.json'
 const appName = skeetOptions.name
 const project = skeetOptions.projectId
 const region = skeetOptions.region
-const appDomain = skeetOptions.appDomain
 const serviceAccount = `${appName}@${project}.iam.gserviceaccount.com`
 const vpcConnector = `${appName}-con`
-const cors = ['http://localhost:4000', `https://{${appDomain}}`]
+const cors = true
 
 export const publicHttpOption: HttpsOptions = {
   region,
@@ -28,7 +27,7 @@ export const privateHttpOption: HttpsOptions = {
   memory: '1GiB',
   maxInstances: 100,
   minInstances: 0,
-  concurrency: 1,
+  concurrency: 80,
   serviceAccount,
   ingressSettings: 'ALLOW_INTERNAL_AND_GCLB',
   vpcConnector,

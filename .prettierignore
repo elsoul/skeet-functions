@@ -1,8 +1,4 @@
-
 .next
 out
 dist
 build
-src/__generated__
-src/schema.graphql
-src/index.ts

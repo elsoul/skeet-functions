@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "dist",
     "target": "ESNext",
-    "module": "CommonJS",
-    "outDir": "./dist",
     "rootDir": ".",
     "strict": true,
     "moduleResolution": "node",
@@ -20,8 +22,7 @@
       "@/*": ["src/*"]
     }
   },
-  "files": ["package.json"],
-  "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules"],
-  "compileOnSave": false
+  "compileOnSave": true,
+  "include": ["src/*", "src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "scripts/*"]
 }

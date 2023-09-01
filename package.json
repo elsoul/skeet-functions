@@ -1,49 +1,44 @@
 {
-  "name": "skeet-functions",
-  "version": "0.9.1",
-  "description": "Skeet Functions - SKeet Full-stack TypeScript Serverless Framework",
-  "repository": "https://github.com/elsoul/skeet-cli.git",
-  "author": "ELSOUL LABO B.V.",
-  "license": "Apache-2.0",
-  "private": false,
+  "name": "functions",
   "scripts": {
     "lint": "eslint --ext .ts,.js --fix .",
+    "update:packages": "ncu -u && yarn",
     "dev": "nodemon",
-    "dev:login": "npx ts-node -r tsconfig-paths/register --transpile-only src/scripts/login.ts",
+    "fb:login": "npx ts-node -r tsconfig-paths/register --transpile-only src/lib/login.ts",
+    "seed": "npx ts-node -r tsconfig-paths/register --transpile-only src/scripts/addVertexMessageSeed.ts",
     "build": "npx ts-node build.ts",
     "serve": "firebase emulators:start",
     "shell": "yarn build && firebase functions:shell",
     "start": "node dist/index.js",
+    "nodemon": "npx ts-node devBuild.ts && node ./dist/index.js",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "db": "npx ts-node -r tsconfig-paths/register --transpile-only src/models/chatRoom.ts",
+    "open": "npx ts-node -r tsconfig-paths/register --transpile-only src/lib/openai/openAi.ts"
   },
   "engines": {
     "node": "18"
   },
   "main": "dist/index.js",
   "dependencies": {
-    "@google-cloud/pubsub": "3.4.1",
-    "@skeet-framework/firestore": "^1.1.1",
-    "crypto": "1.0.1",
-    "date-fns": "2.30.0",
-    "date-fns-tz": "2.0.0",
-    "dotenv": "16.0.3",
-    "firebase": "9.22.0",
-    "firebase-admin": "11.9.0",
-    "firebase-functions": "4.4.1",
-    "node-fetch": "2.6.9",
-    "typesaurus": "7"
+    "@skeet-framework/ai": "1.4.11",
+    "@skeet-framework/firestore": "2.1.1",
+    "@skeet-framework/utils": "1.2.1",
+    "firebase-admin": "11.10.1",
+    "firebase-functions": "4.4.1"
   },
   "devDependencies": {
-    "@types/node-fetch": "2.6.3",
-    "@typescript-eslint/eslint-plugin": "5.12.0",
-    "@typescript-eslint/parser": "5.12.0",
-    "esbuild": "0.17.14",
-    "eslint": "8.9.0",
+    "@typescript-eslint/eslint-plugin": "6.5.0",
+    "@typescript-eslint/parser": "6.5.0",
+    "esbuild": "0.19.2",
+    "eslint": "8.48.0",
     "eslint-config-google": "0.14.0",
-    "eslint-plugin-import": "2.25.4",
-    "firebase-functions-test": "3.0.0",
-    "nodemon": "2.0.20",
-    "typescript": "5.0.4"
-  }
+    "eslint-plugin-import": "2.28.1",
+    "firebase": "10.3.0",
+    "nodemon": "3.0.1",
+    "npm-check-updates": "16.13.2",
+    "prettier": "3.0.3",
+    "typescript": "5.2.2"
+  },
+  "private": true
 }

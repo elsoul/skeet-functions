@@ -1,1 +1,1 @@
-export * from './userModel'
+export {}
