@@ -5,6 +5,7 @@
     "prettier"
   ],
   "parserOptions": {
+    "project": "./tsconfig.json",
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
@@ -14,7 +15,17 @@
     "es6": true
   },
   "rules": {
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ],
     "@typescript-eslint/ban-ts-comment": [
       "off",
       {
