@@ -1,5 +1,9 @@
 {
-  "name": "functions",
+  "name": "skeet-functions",
+  "version": "0.2.1",
+  "description": "Skeet Framework Boilerplate with Firebase Functions",
+  "author": "ELSOUL LABO B.V.",
+  "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint --ext .ts,.js --fix .",
     "update:packages": "ncu -u && yarn",
